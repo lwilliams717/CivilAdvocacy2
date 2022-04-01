@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Know Your Government</string>
+    <string name="dem">Democrat</string>
+    <string name="rep">Republican</string>
+    <string name="ind">Independent</string>
+    <string name="address">Address:</string>
+    <string name="phone">Phone:</string>
+    <string name="email">Email:</string>
+    <string name="website">Website:</string>
+    <string name="youtube">Youtube</string>
+    <string name="twitter">Twitter</string>
+    <string name="facebook">Facebook</string>
+    <string name="data_prov">Data Provided by:</string>
+    <string name="author">2022, Lauren Williams</string>
+    <string name="version">Version 1.0</string>
+    <string name="api">https://developers.google.com/civic-information/</string>
+    <string name="about">About</string>
+    <string name="loc">Location</string>
+    <string name="invalid">Invalid Location</string>
+    <string name="new_loc_dialog">Enter Address</string>
+    <string name="new_loc">Location Added!</string>
+    <string name="no_network">No Network Connection</string>
+    <string name="enter_loc">Enter Your Location to Begin!</string>
+
+
+
+</resources>

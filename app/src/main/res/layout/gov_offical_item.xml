@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <TextView
+        android:id="@+id/official_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/off_white"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:textColor="@color/navy_blue"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="3dp"
+        />
+
+    <TextView
+        android:id="@+id/official_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:padding="5dp"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/official_title"
+        tools:ignore="TextContrastCheck"
+        android:background="@color/off_white"
+        android:elevation="3dp"
+        />
+
+    <ImageView
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/official_name"
+        app:srcCompat="@drawable/separator" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
