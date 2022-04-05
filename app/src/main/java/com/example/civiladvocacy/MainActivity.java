@@ -25,9 +25,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private static ArrayList<Official> officials = new ArrayList<>();
+    private static final ArrayList<Official> officials = new ArrayList<>();
     static RecyclerView officals_recycler;
-    private String api_key = "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBcp2fjH0dBwddUaaF5bFx0bxMp0ZnBa0c&address=";
+    private final String api_key = "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBcp2fjH0dBwddUaaF5bFx0bxMp0ZnBa0c&address=";
     private static String address = "1263%20Pacific%20Ave.%20Kansas%20City%20";
     private String state = "KS";
     private String API_link = "";
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //set the main activity layout recycler
         officals_recycler = findViewById(R.id.main_recycler);
         titlebar = findViewById(R.id.main_titlebar);
-        titlebar.setMovementMethod(new ScrollingMovementMethod());
 
         //sets up the recycler
         loadRecycler();

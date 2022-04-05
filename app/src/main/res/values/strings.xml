@@ -14,6 +14,7 @@
     <string name="author">2022, Lauren Williams</string>
     <string name="version">Version 1.0</string>
     <string name="api">https://developers.google.com/civic-information/</string>
+    <string name="api_text"><u>Google Civic Information API</u></string>
     <string name="about">About</string>
     <string name="loc">Location</string>
     <string name="invalid">Invalid Location</string>
