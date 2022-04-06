@@ -30,7 +30,8 @@ public class OfficialAdapter extends RecyclerView.Adapter<OfficialViewHolder> {
     public void onBindViewHolder(@NonNull OfficialViewHolder holder, int position) {
         Official o = officials.get(position);
         holder.official_title.setText( o.getPosition() );
-        holder.official_name.setText( o.getName() + " " + o.getParty() );
+        String temp = o.getName() + " " + o.getParty();
+        holder.official_name.setText( temp );
     }
 
 

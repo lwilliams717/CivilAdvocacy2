@@ -66,7 +66,6 @@ public class OfficialDownloader {
                 //sounds misleading but the name is actually the name of the office position
                 String position = office.getString("name");
 
-
                 //the array to get the officials index for the officials array
                 JSONArray officialIndicesArr = office.getJSONArray("officialIndices");
 

@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.util.Linkify;
@@ -125,6 +126,9 @@ public class InfoActivity extends AppCompatActivity {
             else{
                 official_address.setText(new StringBuilder().append(getString(R.string.address)).append(" ").append(currentOffcial.getAddress()).toString());
                 Linkify.addLinks(official_address, Linkify.ALL);
+                //the address will sometimes need to be substring
+                //this makes an underline for the textview
+                //official_address.setPaintFlags(official_address.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 official_address.setLinkTextColor(getResources().getColor(R.color.white));
             }
 
@@ -249,6 +253,16 @@ public class InfoActivity extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://www.youtube.com/" + name)));
         }
+    }
+
+    public void onClickAddress(View view){
+        Intent intent = new Intent();
+        String address = currentOffcial.getAddress();
+        String url = currentOffcial.getAddress();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 
     //just makes sure the activity closes & info removed
