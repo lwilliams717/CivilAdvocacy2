@@ -125,7 +125,7 @@ public class InfoActivity extends AppCompatActivity {
             }
             else{
                 official_address.setText(new StringBuilder().append(getString(R.string.address)).append(" ").append(currentOffcial.getAddress()).toString());
-                Linkify.addLinks(official_address, Linkify.ALL);
+                Linkify.addLinks(official_address, Linkify.MAP_ADDRESSES);
                 //the address will sometimes need to be substring
                 //this makes an underline for the textview
                 //official_address.setPaintFlags(official_address.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
