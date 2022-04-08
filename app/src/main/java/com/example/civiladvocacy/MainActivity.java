@@ -1,5 +1,6 @@
 package com.example.civiladvocacy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,14 +28,14 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final ArrayList<Official> officials = new ArrayList<>();
+    private static final String TAG = "";
     static RecyclerView officals_recycler;
     private final String api_key = "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBcp2fjH0dBwddUaaF5bFx0bxMp0ZnBa0c&address=";
-    private static String address = "1263%20Pacific%20Ave.%20Kansas%20City%20";
+    private static String address = "";
     private String state = "KS";
     private String API_link = "";
     private boolean network = true;
     public boolean locErr = false;
-
     static TextView titlebar;
 
     @Override
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //sets up the recycler
         loadRecycler();
+
         setTitle(getString(R.string.enter_loc));
         officials.clear();
 
@@ -196,11 +199,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //this function gets called whenever the volley request throws an error, meaning the user entered a location
     //that could not be called with the API
     public void locationError(){
+        titlebar.setText(getString(R.string.no_loc));
         //sets the flag variable to let the main activity know that the location was incorrect
         locErr = true;
         //inform the user the address was invalid
         Toast.makeText( this, getString(R.string.invalid), Toast.LENGTH_LONG).show();
     }
 
+
+    //need to make sure the activity doesnt lose the information when it's destroyed by rotating
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("api", API_link);
+        Log.d(TAG, "onSaveInstanceState: " + API_link);
+        // Call super last
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        // Call super first
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.d(TAG, "onRestoreInstanceState: " + savedInstanceState.getString("api"));
+        API_link = savedInstanceState.getString("api");
+        OfficialDownloader.downloadOfficials(this, API_link);
+    }
 
 }

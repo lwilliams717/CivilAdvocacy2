@@ -7,6 +7,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.UnderlineSpan;
 import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
@@ -86,10 +89,6 @@ public class InfoActivity extends AppCompatActivity {
 
             loadOfficial();
         }
-        else {
-            //do nothing for now
-        }
-
 
     }
 
@@ -124,12 +123,16 @@ public class InfoActivity extends AppCompatActivity {
                 official_address.setVisibility(View.GONE);
             }
             else{
-                official_address.setText(new StringBuilder().append(getString(R.string.address)).append(" ").append(currentOffcial.getAddress()).toString());
-                Linkify.addLinks(official_address, Linkify.MAP_ADDRESSES);
-                //the address will sometimes need to be substring
-                //this makes an underline for the textview
-                //official_address.setPaintFlags(official_address.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                official_address.setLinkTextColor(getResources().getColor(R.color.white));
+               //official_address.setText(new StringBuilder().append(getString(R.string.address)).append(" ").append(currentOffcial.getAddress()).toString());
+               //Linkify.addLinks(official_address, Linkify.MAP_ADDRESSES);
+
+                SpannableString officialAddr = new SpannableString( getString(R.string.address) + " " + currentOffcial.getAddress());
+                officialAddr.setSpan(new UnderlineSpan(), 0,officialAddr.length(), 0);
+                officialAddr.setSpan(new ForegroundColorSpan(0xFFFFFFFF), 0, officialAddr.length(), 0);
+                official_address.setText(officialAddr);
+                official_address.setClickable(true);
+
+                //official_address.setLinkTextColor(getResources().getColor(R.color.white));
             }
 
             //have to make sure they have the attribute and if not, remove the textview
@@ -256,13 +259,10 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void onClickAddress(View view){
-        Intent intent = new Intent();
-        String address = currentOffcial.getAddress();
-        String url = currentOffcial.getAddress();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse(url));
-        startActivity(intent);
+        String geo = "geo:0,0?q=";
+        String address = currentOffcial.getAddress().replace(" ", "+");
+        Intent searchAddress = new Intent(Intent.ACTION_VIEW, Uri.parse(geo+address));
+        startActivity(searchAddress);
     }
 
     //just makes sure the activity closes & info removed

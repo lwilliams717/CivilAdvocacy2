@@ -7,58 +7,75 @@
     tools:context=".PhotoActivity"
     >
 
-    <TextView
-        android:id="@+id/photo_titlebar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:elevation="6dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="65 East Lake Street, Chicago, IL 60601"
-        android:textColor="@color/pale_white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/photo_titlebar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:elevation="6dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="65 East Lake Street, Chicago, IL 60601"
+            android:textColor="@color/pale_white"
+            android:textSize="16sp"
 
-    <TextView
-        android:id="@+id/photo_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Tammy Duckworth"
-        android:textColor="@color/white"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photo_position" />
+            />
 
-    <TextView
-        android:id="@+id/photo_position"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:text="US Senator"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photo_titlebar" />
+        <TextView
+            android:id="@+id/photo_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Tammy Duckworth"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/photo_img"
-        android:layout_width="382dp"
-        android:layout_height="432dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="17dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photo_name"
-        tools:srcCompat="@tools:sample/avatars"
-        />
+        <TextView
+            android:id="@+id/photo_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:gravity="center"
+            android:text="US Senator"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/photo_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="45dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/photo_party_img"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:layout_constraintBottom_toBottomOf="@+id/photo_img"
+                app:layout_constraintEnd_toEndOf="@+id/photo_img"
+                app:layout_constraintStart_toStartOf="@+id/photo_img"
+                android:layout_marginBottom="-45dp"
+                app:srcCompat="@drawable/dem_logo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

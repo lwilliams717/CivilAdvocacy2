@@ -16,6 +16,7 @@ public class PhotoActivity extends AppCompatActivity {
     TextView position;
     TextView name;
     ImageView photo;
+    ImageView party_img;
     private Picasso picasso;
     static Official current;
 
@@ -28,6 +29,7 @@ public class PhotoActivity extends AppCompatActivity {
         position = findViewById(R.id.photo_position);
         name = findViewById(R.id.photo_name);
         photo = findViewById(R.id.photo_img);
+        party_img = findViewById(R.id.photo_party_img);
         picasso = Picasso.get();
 
         loadData();
@@ -49,13 +51,16 @@ public class PhotoActivity extends AppCompatActivity {
         //u gotta change the color of the background to match the party of the official
         if( current.getParty().equalsIgnoreCase("(Democratic Party)") ){
             root.setBackgroundColor(getResources().getColor(R.color.blue, this.getTheme()));
+            party_img.setImageResource(R.drawable.dem_logo);
         }
         else if (current.getParty().equalsIgnoreCase("(Republican Party)")){
             root.setBackgroundColor(getResources().getColor(R.color.red, this.getTheme()));
+            party_img.setImageResource(R.drawable.rep_logo);
         }
         else {
             //set to black if they're some other third party
             root.setBackgroundColor(getResources().getColor(R.color.black, this.getTheme()));
+            party_img.setVisibility(View.GONE);
         }
 
         //loads image using picasso!
@@ -63,6 +68,8 @@ public class PhotoActivity extends AppCompatActivity {
                 .error(R.drawable.brokenimage)
                 .placeholder(R.drawable.placeholder)
                 .into(photo);
+
+
     }
 
 
